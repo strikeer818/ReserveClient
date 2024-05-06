@@ -1,1 +1,33 @@
-<p>reservations works!</p>
+<h1 id="tableLabel">Reservations</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+@if(!reservations){
+    <p><em>Loading...</em></p>
+}
+
+@else{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ReservationId</th>
+                <th>ReservationDate </th>
+                <th>ReservationTime </th>
+                <th>PartySize</th>
+                <th>SpecialRequests</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for(reservation of reservations; track $index) {
+                <tr>
+                    <td><a [routerLink]="['/reservationCustomers', reservation.reservationId]">{{ reservation.reservationId }}</a></td>
+                    <td>{{ reservation.reservationDate }}</td>
+                    <td>{{ reservation.reservationTime }}</td>
+                    <td>{{ reservation.partySize }}</td>
+                    <td>{{ reservation.specialRequests }}</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
