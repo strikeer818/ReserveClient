@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { environment } from '../../environments/environment.development';
 import { Customer } from './customer';
 import { HttpClient } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
@@ -13,7 +14,6 @@ import { MatTableModule } from '@angular/material/table';
 })
 export class ReservationCustomersComponent {
   public customers: Customer[] = [];
-  baseUrl = "http://localhost:5245/";
   public displayedColumns : string[] = ["customerId", "name", "email", "phone"];
   id: number;
   constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {
@@ -26,7 +26,7 @@ export class ReservationCustomersComponent {
   getCustomers() {
     let idparameter = this.activatedRoute.snapshot.paramMap.get("id");
     this.id = idparameter ? +idparameter : -1;
-    this.http.get<Customer[]>(`${this.baseUrl}api/Reservations/ReservationCustomers/${this.id}`).subscribe(
+    this.http.get<Customer[]>(`${environment.baseUrl}api/Reservations/ReservationCustomers/${this.id}`).subscribe(
       {
         next: result=>this.customers = result,
         error: error=>console.error(error),
