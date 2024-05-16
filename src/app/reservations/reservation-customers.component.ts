@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { environment } from '../../environments/environment.development';
+import { environment } from '../../environments/environment';
 import { Customer } from './customer';
 import { HttpClient } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
